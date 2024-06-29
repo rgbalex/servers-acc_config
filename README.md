@@ -17,12 +17,19 @@ Scripts to load server setup as follows:
 > The **source** part of your rule must be *blank* or set to *ALL* to make sure that this works. 
 > This is imperative as there is no NAT on your instance so this is the only way to ensure traffic is allowed in.
 
-| Stateless | Source    | Protocol | Source | Destination |
-| --------- | --------- | -------- | ------ | ----------- |
-| No        | 0.0.0.0/0 | TCP      | All    | 9600        |
-| No        | 0.0.0.0/0 | UDP      | All    | 9600        |
-| No        | 0.0.0.0/0 | TCP      | All    | 9601        |
-| No        | 0.0.0.0/0 | UDP      | All    | 9601        |
+| Stateless | Source    | Protocol | Source | Destination | Notes                                  |
+| --------- | --------- | -------- | ------ | ----------- | -------------------------------------- |
+| No        | 0.0.0.0/0 | TCP      | All    | 9600        | Must be the same as UDP                |
+| No        | 0.0.0.0/0 | UDP      | All    | 9600        | Must be the same as TCP                |
+| No        | 0.0.0.0/0 | TCP      | All    | 9601        | Must be one higher than the above port |
+| No        | 0.0.0.0/0 | UDP      | All    | 9601        | Must be one higher than the above port |
+
+> [!CAUTION]
+> If the server does get to the part where it makes a request to the lobby and claims it succeeds, but then silently and immediately crashes with no error, this is because the server is failing to make a handshake to the Assetto Corsa Main Server. The handshake happens on one port higher than the UDP and TCP ports set in the config file.
+>
+> These ports must be the same because we are using the `publicIP` setting in `settings.json`
+>
+> See https://www.acc-wiki.info/wiki/Server_Configuration for more information
 
 1. `run_server.sh`
 
