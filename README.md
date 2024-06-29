@@ -1,5 +1,8 @@
 # Setup files for Assetto Corsa Competizone Oracle server
 
+> [!NOTE]  
+> Sometimes, the all important `RegisterToLobby succeeded` line seems to arrive 30-60 seconds late. Please be patient but do wait for it as without it the server will not be responsive in ACC
+
 > [!IMPORTANT]
 > Please make sure to run `iptables -I INPUT -j ACCEPT` on the instance first to allow all traffic in.
 > If you are comforable using `sudo iptables -S` and checking properly, then please make more advanced rules.
