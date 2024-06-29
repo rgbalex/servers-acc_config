@@ -1,4 +1,7 @@
 # Setup files for Assetto Corsa Competizone Oracle server
+## To be setup by yourself for free, forever!
+
+Start here for more info: https://developer.valvesoftware.com/wiki/SteamCMD#Linux
 
 > [!NOTE]  
 > Sometimes, the all important `RegisterToLobby succeeded` line seems to arrive 30-60 seconds late. Please be patient but do wait for it as without it the server will not be responsive in ACC
