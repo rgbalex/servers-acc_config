@@ -1,7 +1,7 @@
 {
     "serverName": "rgbalex - Endless Nurburgring 24h Server",
     "adminPassword": "super_secret_admin_password!",
-    "carGroup": "FreeForAll",
+    "carGroup": "GT3",
     "trackMedalsRequirement": 0,
     "safetyRatingRequirement": -1,
     "racecraftRatingRequirement": -1,
@@ -18,5 +18,6 @@
     "centralEntryListPath": "",
     "configVersion": 1,
     "maxCarSlots": 10,
-    "ignorePrematureDisconnects": 0
+    "ignorePrematureDisconnects": 0,
+    "allowAutoDQ": 0
 }
