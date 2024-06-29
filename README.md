@@ -6,9 +6,11 @@ Start here for more info: https://developer.valvesoftware.com/wiki/SteamCMD#Linu
 > [!NOTE]  
 > Sometimes, the all important `RegisterToLobby succeeded` line seems to arrive 30-60 seconds late. Please be patient but do wait for it as without it the server will not be responsive in ACC
 
-> [!IMPORTANT]
-> Please make sure to run `iptables -I INPUT -j ACCEPT` on the instance first to allow all traffic in.
-> If you are comforable using `sudo iptables -S` and checking properly, then please make more advanced rules.
+> [!TIP]
+> ~~Please make sure to run `iptables -I INPUT -j ACCEPT` on the instance first to allow all traffic in.~~
+> ~~If you are comforable using `sudo iptables -S` and checking properly, then please make more advanced rules.~~
+> 
+> This has been added to the startup script and is not important anymore. However, feel free to make your own edits if you deem it necessary.
 > See https://www.reddit.com/r/oraclecloud/comments/q2iv2h/eli5_how_to_forward_ports_on_oracle_cloud/ for more
 > See https://steamcommunity.com/app/805550/discussions/0/2946998508797770826/ for more
 
@@ -28,7 +30,7 @@ Scripts to load server setup as follows:
 | No        | 0.0.0.0/0 | TCP      | All    | 9601        | Must be one higher than the above port |
 | No        | 0.0.0.0/0 | UDP      | All    | 9601        | Must be one higher than the above port |
 
-> [!CAUTION]
+> [!IMPORTANT]
 > If the server does get to the part where it makes a request to the lobby and claims it succeeds, but then silently and immediately crashes with no error, this is because the server is failing to make a handshake to the Assetto Corsa Main Server. The handshake happens on one port higher than the UDP and TCP ports set in the config file.
 >
 > These ports must be the same because we are using the `publicIP` setting in `settings.json`
