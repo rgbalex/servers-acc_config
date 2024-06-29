@@ -17,31 +17,20 @@ Scripts to load server setup as follows:
 > The **source** part of your rule must be *blank* or set to *ALL* to make sure that this works. 
 > This is imperative as there is no NAT on your instance so this is the only way to ensure traffic is allowed in.
 
-| Stateless | Source | Protocol | Source | Destination | Notes |
-| --- | --- | --- | --- | --- | --- |
-| No | 0.0.0.0/0 | TCP | All | 9600 | |
-| No | 0.0.0.0/0 | UDP | All | 9600 | |
-| No | 0.0.0.0/0 | UDP | All | 9601 | |
-| No | 0.0.0.0/0 | TCP | All | 8081 | (believed optional - added for safety) |
-| No | 0.0.0.0/0 | UDP | All | 8081 | (believed optional - added for safety) |
+| Stateless | Source    | Protocol | Source | Destination |
+| --------- | --------- | -------- | ------ | ----------- |
+| No        | 0.0.0.0/0 | TCP      | All    | 9600        |
+| No        | 0.0.0.0/0 | UDP      | All    | 9600        |
+| No        | 0.0.0.0/0 | TCP      | All    | 9601        |
+| No        | 0.0.0.0/0 | UDP      | All    | 9601        |
 
-1. `update_server.sh`
-
-```bash
-#!/bin/bash
-
-steamcmd \
-+@sSteamCmdForcePlatformType windows \
-+force_install_dir /home/ubuntu/acc \
-+login CHANGE_THIS_TO_YOUR_STEAM_ACCOUNT CHANGE_THIS_TO_YOUR_PASSWORD \
-+app_update 1430110 \
-+quit
-```
-
-2. `run_server.sh`
+1. `run_server.sh`
 
 ```bash
 #!/bin/bash
+
+# Ensure inbound traffic is allowed
+sudo iptables -I INPUT -j ACCEPT
 
 # Clone configs
 rm -rf servers-acc_config/
@@ -57,7 +46,12 @@ sed -i '/    "adminPassword": "super_secret_admin_password!",/c\    "adminPasswo
 sed -i '/    "publicIP": ""/c\    "publicIP": "CHANGE_THIS_TO_YOUR_INSTANCE_PUBLIC_IPV4_ADDRESS"' cfg/configuration.json
 
 # Check the server is up to date
-./update_server.sh
+steamcmd \
++@sSteamCmdForcePlatformType windows \
++force_install_dir /home/ubuntu/acc \
++login CHANGE_THIS_TO_YOUR_STEAM_ACCOUNT CHANGE_THIS_TO_YOUR_PASSWORD \
++app_update 1430110 \
++quit
 
 # Run the server
 wine acc/server/accServer.exe
