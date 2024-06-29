@@ -40,8 +40,14 @@ Scripts to load server setup as follows:
 ```bash
 #!/bin/bash
 
+echo Waiting 10 seconds after boot to start...
+sleep 10
+
 # Ensure inbound traffic is allowed
 sudo iptables -I INPUT -j ACCEPT
+
+# Since this is called as a service, ensure we are in the right folder
+cd /home/ubuntu
 
 # Clone configs
 rm -rf servers-acc_config/
@@ -70,3 +76,36 @@ wine acc/server/accServer.exe
 
 > [!IMPORTANT]
 > Don't forget to `chmod +x *.sh` to make these files runnable by default.
+
+## To enable autostart
+
+After creating these files in your users home directory (ubuntu by default for Oracle instances), we want to make sure this boots every time this instance is booted. 
+
+After verifying these things work, simply create a service by running the following:
+
+1.  `sudo nano /etc/systemd/system/ACCServer.service`
+
+    Paste the following:
+
+    ```conf
+    [Unit]
+    Description=ACC Server Service
+
+    [Service]
+    ExecStart=/home/ubuntu/run_server.sh
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+2. Make sure to reload with `sudo systemctl daemon-reload`
+
+3. Start with `sudo systemctl start ACCServer`
+
+4. Check the status with `systemctl status ACCServer`
+
+5. Enable autostart with `sudo systemctl enable ACCServer`
+
+
+Congratulations, you should now have a free Assetto Corsa Competizone server forever.
+Reboot your instance and observe - remember to give it a minute to register the session with the ACC host server. 
