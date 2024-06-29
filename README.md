@@ -7,6 +7,7 @@
 > Please make sure to run `iptables -I INPUT -j ACCEPT` on the instance first to allow all traffic in.
 > If you are comforable using `sudo iptables -S` and checking properly, then please make more advanced rules.
 > See https://www.reddit.com/r/oraclecloud/comments/q2iv2h/eli5_how_to_forward_ports_on_oracle_cloud/ for more
+> See https://steamcommunity.com/app/805550/discussions/0/2946998508797770826/ for more
 
 Scripts to load server setup as follows:
 (be prepared for Steam Guard to prompt you the first time you log in on a given instance.)
