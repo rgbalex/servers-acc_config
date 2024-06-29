@@ -17,5 +17,6 @@
     "latencyStrategy": 0,
     "centralEntryListPath": "",
     "configVersion": 1,
+    "maxCarSlots": 10,
     "ignorePrematureDisconnects": 0
 }
