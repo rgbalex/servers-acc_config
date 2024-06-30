@@ -41,7 +41,7 @@ Scripts to load server setup as follows:
 Please note: These will take some time as Wine requires a lot of missing packages to be installed (I was using the Ubuntu Minimal install so it is logical a lot of these were missing)
 
 ```bash
-sudo add-apt-repository multiverse; sudo dpkg --add-architecture i386; sudo apt update; sudo apt upgrade; sudo apt install steamcmd nano wine -y
+sudo add-apt-repository multiverse; sudo dpkg --add-architecture i386; sudo apt update; sudo apt upgrade -y; sudo apt install steamcmd nano wine -y
 ```
 
 1. `run_server.sh`
