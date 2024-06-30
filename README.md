@@ -109,3 +109,5 @@ After verifying these things work, simply create a service by running the follow
 
 Congratulations, you should now have a free Assetto Corsa Competizone server forever.
 Reboot your instance and observe - remember to give it a minute to register the session with the ACC host server. 
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
